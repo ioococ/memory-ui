@@ -228,7 +228,7 @@
 </template>
 
 <script>
-  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
+  const uploadPicture = () => import( "@/components/common/uploadPicture.vue");
 
   export default {
     components: {
@@ -313,15 +313,13 @@
         this.$http.post(this.$constant.baseURL + "/webInfo/updateWebInfo", {
           id: webInfo.id,
           status: webInfo.status
-        }, true)
-          .then((res) => {
+        }, true).then((res) => {
             this.getWebInfo();
             this.$message({
               message: "保存成功！",
               type: "success"
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -329,8 +327,7 @@
           });
       },
       getWebInfo() {
-        this.$http.get(this.$constant.baseURL + "/admin/webInfo/getAdminWebInfo", {}, true)
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/admin/webInfo/getAdminWebInfo", {}, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.webInfo.id = res.data.id;
               this.webInfo.webName = res.data.webName;
@@ -345,8 +342,7 @@
               this.randomName = JSON.parse(res.data.randomName);
               this.randomCover = JSON.parse(res.data.randomCover);
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -459,15 +455,13 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.post(this.$constant.baseURL + "/webInfo/updateWebInfo", value, true)
-            .then((res) => {
+          this.$http.post(this.$constant.baseURL + "/webInfo/updateWebInfo", value, true).then((res) => {
               this.getWebInfo();
               this.$message({
                 message: "保存成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"

@@ -198,8 +198,8 @@
 </template>
 
 <script>
-  const proButton = () => import( "../../components/common/proButton.vue");
-  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
+  const proButton = () => import( "@/components/common/proButton.vue");
+  const uploadPicture = () => import( "@/components/common/uploadPicture.vue");
 
   export default {
     components: {
@@ -252,8 +252,7 @@
           password: this.$common.encrypt(this.password.trim())
         };
 
-        this.$http.post(this.$constant.baseURL + "/user/login", user, false, false)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/user/login", user, false, false).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.$store.commit("loadCurrentUser", res.data);
               localStorage.setItem("userToken", res.data.accessToken);
@@ -261,8 +260,7 @@
               this.password = "";
               this.$router.push({path: '/'});
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -312,8 +310,7 @@
           user.email = this.email;
         }
 
-        this.$http.post(this.$constant.baseURL + "/user/regist", user)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/user/regist", user).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.$store.commit("loadCurrentUser", res.data);
               localStorage.setItem("userToken", res.data.accessToken);
@@ -323,8 +320,7 @@
               let userToken = this.$common.encrypt(localStorage.getItem("userToken"));
               window.open(this.$constant.imBaseURL + "?userToken=" + userToken);
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -351,8 +347,7 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.post(this.$constant.baseURL + "/user/updateUserInfo", user)
-            .then((res) => {
+          this.$http.post(this.$constant.baseURL + "/user/updateUserInfo", user).then((res) => {
               if (!this.$common.isEmpty(res.data)) {
                 this.$store.commit("loadCurrentUser", res.data);
                 this.currentUser = this.$store.state.currentUser;
@@ -361,8 +356,7 @@
                   type: "success"
                 });
               }
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
@@ -466,8 +460,7 @@
               avatar: this.avatar.trim()
             };
 
-            this.$http.post(this.$constant.baseURL + "/user/updateUserInfo", user)
-              .then((res) => {
+            this.$http.post(this.$constant.baseURL + "/user/updateUserInfo", user).then((res) => {
                 if (!this.$common.isEmpty(res.data)) {
                   this.$store.commit("loadCurrentUser", res.data);
                   this.currentUser = this.$store.state.currentUser;
@@ -477,8 +470,7 @@
                     type: "success"
                   });
                 }
-              })
-              .catch((error) => {
+              }).catch((error) => {
                 this.$message({
                   message: error.message,
                   type: "error"
@@ -524,23 +516,20 @@
         }
 
         if (this.dialogTitle === "找回密码") {
-          this.$http.post(this.$constant.baseURL + "/user/updateForForgetPassword", params, false, false)
-            .then((res) => {
+          this.$http.post(this.$constant.baseURL + "/user/updateForForgetPassword", params, false, false).then((res) => {
               this.clearDialog();
               this.$message({
                 message: "修改成功，请重新登陆！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
               });
             });
         } else {
-          this.$http.post(this.$constant.baseURL + "/user/updateSecretInfo", params, false, false)
-            .then((res) => {
+          this.$http.post(this.$constant.baseURL + "/user/updateSecretInfo", params, false, false).then((res) => {
               if (!this.$common.isEmpty(res.data)) {
                 this.$store.commit("loadCurrentUser", res.data);
                 this.currentUser = this.$store.state.currentUser;
@@ -550,8 +539,7 @@
                   type: "success"
                 });
               }
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
@@ -574,14 +562,12 @@
             url = "/user/getCodeForBind";
           }
 
-          this.$http.get(this.$constant.baseURL + url, params)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + url, params).then((res) => {
               this.$message({
                 message: "验证码已发送，请注意查收！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"

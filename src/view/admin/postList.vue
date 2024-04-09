@@ -132,14 +132,12 @@
 
     methods: {
       getSortAndLabel() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/listSortAndLabel")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/listSortAndLabel").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.sorts = res.data.sorts;
               this.labels = res.data.labels;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -165,14 +163,12 @@
         } else {
           url = "/admin/article/user/list";
         }
-        this.$http.post(this.$constant.baseURL + url, this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + url, this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.articles = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -206,8 +202,7 @@
             recommendStatus: article.recommendStatus
           }
         }
-        this.$http.get(this.$constant.baseURL + "/admin/article/changeArticleStatus", param, true)
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/admin/article/changeArticleStatus", param, true).then((res) => {
             if (flag === 1) {
               this.$message({
                 duration: 0,
@@ -221,8 +216,7 @@
                 type: "success"
               });
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -236,16 +230,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/article/deleteArticle", {id: item.id}, true)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + "/article/deleteArticle", {id: item.id}, true).then((res) => {
               this.pagination.current = 1;
               this.getArticles();
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"

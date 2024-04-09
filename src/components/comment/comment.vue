@@ -146,13 +146,11 @@
         this.getComments(this.pagination);
       },
       getTotal() {
-        this.$http.get(this.$constant.baseURL + "/comment/getCommentCount", {source: this.source, type: this.type})
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/comment/getCommentCount", {source: this.source, type: this.type}).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.total = res.data;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -188,8 +186,7 @@
         });
       },
       getComments(pagination, floorComment = {}, isToPage = false) {
-        this.$http.post(this.$constant.baseURL + "/comment/listComment", pagination)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/comment/listComment", pagination).then((res) => {
             if (!this.$common.isEmpty(res.data) && !this.$common.isEmpty(res.data.records)) {
               if (this.$common.isEmpty(floorComment)) {
                 this.comments = res.data.records;
@@ -208,8 +205,7 @@
                 this.$common.imgShow("#comment-content .pictureReg");
               });
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -226,8 +222,7 @@
           commentContent: commentContent
         };
 
-        this.$http.post(this.$constant.baseURL + "/comment/saveComment", comment)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/comment/saveComment", comment).then((res) => {
             this.$message({
               type: 'success',
               message: '保存成功！'
@@ -242,8 +237,7 @@
             }
             this.getComments(this.pagination);
             this.getTotal();
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -262,8 +256,7 @@
 
         let floorComment = this.floorComment;
 
-        this.$http.post(this.$constant.baseURL + "/comment/saveComment", comment)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/comment/saveComment", comment).then((res) => {
             let pagination = {
               current: 1,
               size: 5,
@@ -274,8 +267,7 @@
             }
             this.getComments(pagination, floorComment);
             this.getTotal();
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

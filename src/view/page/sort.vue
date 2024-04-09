@@ -33,10 +33,10 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "../../components/funny/twoPoem.vue");
-  const proTag = () => import( "../../components/common/proTag.vue");
-  const articleList = () => import( "../../components/page/articleList.vue");
-  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
+  const twoPoem = () => import( "@/components/funny/twoPoem.vue");
+  const proTag = () => import( "@/components/common/proTag.vue");
+  const articleList = () => import( "@/components/page/articleList.vue");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
 
   export default {
     components: {
@@ -124,14 +124,12 @@
         });
       },
       getArticles() {
-        this.$http.post(this.$constant.baseURL + "/article/listArticle", this.pagination)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/article/listArticle", this.pagination).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.articles = this.articles.concat(res.data.records);
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

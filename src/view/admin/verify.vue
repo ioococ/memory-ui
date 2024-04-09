@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  const proButton = () => import( "../../components/common/proButton.vue");
+  const proButton = () => import( "@/components/common/proButton.vue");
 
   export default {
     components: {
@@ -59,8 +59,7 @@
           isAdmin: true
         };
 
-        this.$http.post(this.$constant.baseURL + "/user/login", user, true, false)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/user/login", user, true, false).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               localStorage.setItem("adminToken", res.data.accessToken);
               this.$store.commit("loadCurrentAdmin", res.data);
@@ -68,8 +67,7 @@
               this.password = "";
               this.$router.push({path: this.redirect});
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

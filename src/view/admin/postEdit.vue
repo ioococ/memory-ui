@@ -98,7 +98,7 @@
 </template>
 
 <script>
-  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
+  const uploadPicture = () => import( "@/components/common/uploadPicture.vue");
 
   export default {
     components: {
@@ -198,14 +198,12 @@
         }
       },
       saveLocal(pos, fd) {
-        this.$http.upload(this.$constant.baseURL + "/resource/upload", fd, true)
-          .then((res) => {
+        this.$http.upload(this.$constant.baseURL + "/resource/upload", fd, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               let url = res.data;
               this.$refs.md.$img2Url(pos, url);
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -213,29 +211,25 @@
           });
       },
       saveQiniu(pos, fd) {
-        this.$http.get(this.$constant.baseURL + "/qiniu/getUpToken", {key: fd.get("key")}, true)
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/qiniu/getUpToken", {key: fd.get("key")}, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               fd.append("token", res.data);
 
-              this.$http.uploadQiniu(this.$constant.qiniuUrl, fd)
-                .then((res) => {
+              this.$http.uploadQiniu(this.$constant.qiniuUrl, fd).then((res) => {
                   if (!this.$common.isEmpty(res.key)) {
                     let url = this.$constant.qiniuDownload + res.key;
                     let file = fd.get("file");
                     this.$common.saveResource(this, "articlePicture", url, file.size, file.type, file.name, "qiniu", true);
                     this.$refs.md.$img2Url(pos, url);
                   }
-                })
-                .catch((error) => {
+                }).catch((error) => {
                   this.$message({
                     message: error.message,
                     type: "error"
                   });
                 });
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -246,8 +240,7 @@
         this.article.articleCover = res;
       },
       getSortAndLabel() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/listSortAndLabel")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/listSortAndLabel").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.sorts = res.data.sorts;
               this.labels = res.data.labels;
@@ -255,8 +248,7 @@
                 this.getArticle();
               }
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -264,13 +256,11 @@
           });
       },
       getArticle() {
-        this.$http.get(this.$constant.baseURL + "/admin/article/getArticleById", {id: this.id}, true)
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/admin/article/getArticleById", {id: this.id}, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.article = res.data;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -314,15 +304,13 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.post(this.$constant.baseURL + url, value, true)
-            .then((res) => {
+          this.$http.post(this.$constant.baseURL + url, value, true).then((res) => {
               this.$message({
                 message: "保存成功！",
                 type: "success"
               });
               this.$router.push({path: '/postList'});
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"

@@ -106,16 +106,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/family/deleteFamily", {id: item.id}, true)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + "/family/deleteFamily", {id: item.id}, true).then((res) => {
               this.pagination.current = 1;
               this.getLoves();
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
@@ -134,14 +132,12 @@
         this.getLoves();
       },
       getLoves() {
-        this.$http.post(this.$constant.baseURL + "/family/listFamily", this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/family/listFamily", this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.loves = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -152,14 +148,12 @@
         this.$http.get(this.$constant.baseURL + "/family/changeLoveStatus", {
           id: item.id,
           flag: item.status
-        }, true)
-          .then((res) => {
+        }, true).then((res) => {
             this.$message({
               message: "修改成功！",
               type: "success"
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

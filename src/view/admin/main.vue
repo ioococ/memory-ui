@@ -197,13 +197,11 @@
 
     methods: {
       getHistoryInfo() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/getHistoryInfo", {}, true)
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/getHistoryInfo", {}, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.historyInfo = res.data;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

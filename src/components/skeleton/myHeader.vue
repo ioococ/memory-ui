@@ -151,10 +151,8 @@ export default {
   },
   methods: {
     logout() {
-      this.$http.get(this.$constant.baseURL + "/user/logout")
-        .then((res) => {
-        })
-        .catch((error) => {
+      this.$http.get(this.$constant.baseURL + "/user/logout").then((res) => {
+        }).catch((error) => {
           this.$message({
             message: error.message,
             type: "error"
@@ -165,14 +163,12 @@ export default {
       this.$router.push({path: '/'});
     },
     getWebInfo() {
-      this.$http.get(this.$constant.baseURL + "/webInfo/getWebInfo")
-        .then((res) => {
+      this.$http.get(this.$constant.baseURL + "/webInfo/getWebInfo").then((res) => {
           if (!this.$common.isEmpty(res.data)) {
             this.$store.commit("loadWebInfo", res.data);
             localStorage.setItem("defaultStoreType", res.data.defaultStoreType);
           }
-        })
-        .catch((error) => {
+        }).catch((error) => {
           this.$message({
             message: error.message,
             type: "error"
@@ -180,11 +176,9 @@ export default {
         });
     },
     getSortInfo() {
-      this.$http.get(this.$constant.baseURL + "/webInfo/getSortInfo")
-        .then((res) => {
+      this.$http.get(this.$constant.baseURL + "/webInfo/getSortInfo").then((res) => {
           if (!this.$common.isEmpty(res.data)) {this.$store.commit("loadSortInfo", res.data);}
-        })
-        .catch((error) => {
+        }).catch((error) => {
           this.$message({
             message: error.message,
             type: "error"

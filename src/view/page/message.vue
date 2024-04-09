@@ -33,8 +33,8 @@
 <script>
   import Email from "@/view/page/email.vue";
 
-  const comment = () => import( "../../components/comment/comment.vue");
-  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
+  const comment = () => import( "@/components/comment/comment.vue");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
 
   export default {
     components: {
@@ -55,8 +55,7 @@
     },
     methods: {
       getTreeHole() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/listTreeHole")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/listTreeHole").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               res.data.forEach(m => {
                 this.barrageList.push({
@@ -67,8 +66,7 @@
                 });
               });
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -93,8 +91,7 @@
         }
 
 
-        this.$http.post(this.$constant.baseURL + "/webInfo/saveTreeHole", treeHole)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/webInfo/saveTreeHole", treeHole).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.barrageList.push({
                 id: res.data.id,
@@ -103,8 +100,7 @@
                 time: Math.floor(Math.random() * 5 + 10)
               });
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "../../components/funny/twoPoem.vue");
-  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
+  const twoPoem = () => import( "@/components/funny/twoPoem.vue");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
 
   export default {
     components: {

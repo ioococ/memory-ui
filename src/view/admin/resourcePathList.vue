@@ -148,8 +148,8 @@
 
 <script>
 
-  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
-  const proButton = () => import( "../../components/common/proButton.vue");
+  const uploadPicture = () => import( "@/components/common/uploadPicture.vue");
+  const proButton = () => import( "@/components/common/proButton.vue");
 
   export default {
     components: {
@@ -242,8 +242,7 @@
           });
           return;
         }
-        this.$http.post(this.$constant.baseURL + "/webInfo/" + (this.isUpdate ? "updateResourcePath" : "saveResourcePath"), this.resourcePath, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/webInfo/" + (this.isUpdate ? "updateResourcePath" : "saveResourcePath"), this.resourcePath, true).then((res) => {
             this.$message({
               message: "保存成功！",
               type: "success"
@@ -251,8 +250,7 @@
             this.addResourcePathDialog = false;
             this.clearDialog();
             this.search();
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -265,14 +263,12 @@
         this.getResourcePaths();
       },
       getResourcePaths() {
-        this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.resourcePaths = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -280,14 +276,12 @@
           });
       },
       changeStatus(item) {
-        this.$http.post(this.$constant.baseURL + "/webInfo/updateResourcePath", item, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/webInfo/updateResourcePath", item, true).then((res) => {
             this.$message({
               message: "修改成功！",
               type: "success"
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -305,15 +299,13 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/webInfo/deleteResourcePath", {id: item.id}, true)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + "/webInfo/deleteResourcePath", {id: item.id}, true).then((res) => {
               this.search();
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"

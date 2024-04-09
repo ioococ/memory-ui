@@ -165,16 +165,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + url, {id: id}, true)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + url, {id: id}, true).then((res) => {
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
               this.getSortInfo();
               this.sort = {};
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
@@ -205,16 +203,14 @@
         } else {
           url = "/webInfo/updateSort";
         }
-        this.$http.post(this.$constant.baseURL + url, this.sortForHttp, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + url, this.sortForHttp, true).then((res) => {
             this.$message({
               message: "保存成功！",
               type: "success"
             });
             this.getSortInfo();
             this.handleClose();
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -237,8 +233,7 @@
         } else {
           url = "/webInfo/updateLabel";
         }
-        this.$http.post(this.$constant.baseURL + url, this.labelForHttp, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + url, this.labelForHttp, true).then((res) => {
             this.$message({
               message: "保存成功！",
               type: "success"
@@ -246,8 +241,7 @@
             this.getSortInfo();
             this.handleClose();
             this.sort = {};
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -294,13 +288,11 @@
         this.sort = sort;
       },
       getSortInfo() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/getSortInfo")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/getSortInfo").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.sortInfo = res.data;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

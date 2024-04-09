@@ -48,10 +48,8 @@
 
     methods: {
       logout() {
-        this.$http.get(this.$constant.baseURL + "/user/logout", {}, true)
-          .then((res) => {
-          })
-          .catch((error) => {
+        this.$http.get(this.$constant.baseURL + "/user/logout", {}, true).then((res) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

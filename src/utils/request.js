@@ -56,11 +56,9 @@ export default {
 
     return new Promise((resolve, reject) => {
       axios
-        .post(url, json ? params : qs.stringify(params), config)
-        .then(res => {
+        .post(url, json ? params : qs.stringify(params), config).then(res => {
           resolve(res.data);
-        })
-        .catch(err => {
+        }).catch(err => {
           reject(err);
         });
     });
@@ -110,11 +108,9 @@ export default {
 
     return new Promise((resolve, reject) => {
       axios
-        .post(url, param, config)
-        .then(res => {
+        .post(url, param, config).then(res => {
           resolve(res.data);
-        })
-        .catch(err => {
+        }).catch(err => {
           reject(err);
         });
     });
@@ -128,11 +124,9 @@ export default {
 
     return new Promise((resolve, reject) => {
       axios
-        .post(url, param, config)
-        .then(res => {
+        .post(url, param, config).then(res => {
           resolve(res.data);
-        })
-        .catch(err => {
+        }).catch(err => {
           reject(err);
         });
     });

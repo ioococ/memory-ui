@@ -59,14 +59,12 @@
 
     methods: {
       getTreeHoles() {
-        this.$http.post(this.$constant.baseURL + "/admin/treeHole/boss/list", this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/admin/treeHole/boss/list", this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.treeHoles = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -84,16 +82,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/webInfo/deleteTreeHole", {id: item.id}, true)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + "/webInfo/deleteTreeHole", {id: item.id}, true).then((res) => {
               this.pagination.current = 1;
               this.getTreeHoles();
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"

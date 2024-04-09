@@ -98,14 +98,12 @@
 
     methods: {
       getFunny() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/listFunny")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/listFunny").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.funnys = res.data;
               this.changeFunny(this.funnys[0].classify);
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -113,8 +111,7 @@
           });
       },
       listFunny() {
-        this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.pagination)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.pagination).then((res) => {
             if (!this.$common.isEmpty(res.data) && !this.$common.isEmpty(res.data.records)) {
               this.funnys.forEach(funny => {
                 if (funny.classify === this.pagination.classify) {
@@ -124,8 +121,7 @@
               });
             }
             this.pagination.classify = "";
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

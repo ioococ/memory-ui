@@ -187,8 +187,7 @@ export default {
       originalName: originalName
     };
 
-    that.$http.post(that.$constant.baseURL + "/resource/saveResource", resource, isAdmin)
-      .catch((error) => {
+    that.$http.post(that.$constant.baseURL + "/resource/saveResource", resource, isAdmin).catch((error) => {
         that.$message({
           message: error.message,
           type: "error"

@@ -61,9 +61,9 @@
 
 <script>
 
-  const myFooter = () => import( "./common/myFooter");
-  const photo = () => import( "./common/photo");
-  const proTag = () => import( "./common/proTag");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
+  const photo = () => import( "@/components/funny/photo.vue");
+  const proTag = () => import( "@/components/common/proTag.vue");
 
   export default {
     components: {
@@ -78,7 +78,7 @@
           current: 1,
           size: 10,
           total: 0,
-          resourceType: "lovePhoto",
+          resourceType: "albums",
           classify: ""
         },
         photoTitleList: [],
@@ -100,21 +100,19 @@
 
     methods: {
       getPhotoTitles() {
-        this.$http.get(this.$constant.baseURL + "/webInfo/listAdminLovePhoto")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/webInfo/listAlbums").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.photoTitleList = res.data;
               this.photoPagination = {
                 current: 1,
                 size: 10,
                 total: 0,
-                resourceType: "lovePhoto",
+                resourceType: "albums",
                 classify: this.photoTitleList[0].classify
               };
               this.changePhoto();
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -127,7 +125,7 @@
             current: 1,
             size: 10,
             total: 0,
-            resourceType: "lovePhoto",
+            resourceType: "albums",
             classify: classify
           };
           this.photoList = [];
@@ -139,14 +137,12 @@
         this.changePhoto();
       },
       changePhoto() {
-        this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.photoPagination)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.photoPagination).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.photoList = this.photoList.concat(res.data.records);
               this.photoPagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

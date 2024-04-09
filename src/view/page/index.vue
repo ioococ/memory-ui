@@ -84,13 +84,13 @@
   </div>
 </template>
 <script>
-  const loader = () => import( "../../components/common/loader.vue");
-  const zombie = () => import( "../../components/funny/zombie.vue");
-  const printer = () => import( "../../components/funny/printer.vue");
-  const articleList = () => import( "../../components/page/articleList.vue");
-  const sortArticle = () => import( "../../components/page/sortArticle.vue");
-  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
-  const myAside = () => import( "../../components/skeleton/myAside.vue");
+  const loader = () => import( "@/components/common/loader.vue");
+  const zombie = () => import( "@/components/funny/zombie.vue");
+  const printer = () => import( "@/components/funny/printer.vue");
+  const articleList = () => import( "@/components/page/articleList.vue");
+  const sortArticle = () => import( "@/components/page/sortArticle.vue");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
+  const myAside = () => import( "@/components/skeleton/myAside.vue");
 
   export default {
     components: {
@@ -193,14 +193,12 @@
       },
 
       async getArticles() {
-        await this.$http.post(this.$constant.baseURL + "/article/listArticle", this.pagination)
-          .then((res) => {
+        await this.$http.post(this.$constant.baseURL + "/article/listArticle", this.pagination).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.articles = this.articles.concat(res.data.records);
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -208,13 +206,11 @@
           });
       },
       getSortArticles() {
-        this.$http.get(this.$constant.baseURL + "/article/listSortArticle")
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/article/listSortArticle").then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.sortArticles = res.data;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

@@ -167,14 +167,12 @@
         this.getUsers();
       },
       getUsers() {
-        this.$http.post(this.$constant.baseURL + "/admin/user/list", this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/admin/user/list", this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.users = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -185,14 +183,12 @@
         this.$http.get(this.$constant.baseURL + "/admin/user/changeUserStatus", {
           userId: user.id,
           flag: user.userStatus
-        }, true)
-          .then((res) => {
+        }, true).then((res) => {
             this.$message({
               message: "修改成功！",
               type: "success"
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -210,14 +206,12 @@
             this.$http.get(this.$constant.baseURL + "/admin/user/changeUserAdmire", {
               userId: user.id,
               admire: user.admire
-            }, true)
-              .then((res) => {
+            }, true).then((res) => {
                 this.$message({
                   message: "修改成功！",
                   type: "success"
                 });
-              })
-              .catch((error) => {
+              }).catch((error) => {
                 this.$message({
                   message: error.message,
                   type: "error"
@@ -256,16 +250,14 @@
         this.$http.get(this.$constant.baseURL + "/admin/user/changeUserType", {
           userId: this.changeUser.id,
           userType: this.changeUser.userType
-        }, true)
-          .then((res) => {
+        }, true).then((res) => {
             this.handleClose();
             this.getUsers();
             this.$message({
               message: "修改成功！",
               type: "success"
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

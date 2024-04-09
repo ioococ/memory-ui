@@ -115,13 +115,11 @@
         this.$emit("selectArticle", this.articleSearch);
       },
       getRecommendArticles() {
-        this.$http.post(this.$constant.baseURL + "/article/listArticle", this.pagination)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/article/listArticle", this.pagination).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.recommendArticles = res.data.records;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({message: error.message, type: "error"});
           });
       },

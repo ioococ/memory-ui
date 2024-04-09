@@ -283,16 +283,14 @@
         }
       },
       saveLocal(fd) {
-        this.$http.upload(this.$constant.baseURL + "/resource/upload", fd)
-          .then((res) => {
+        this.$http.upload(this.$constant.baseURL + "/resource/upload", fd).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.clearContext();
               let url = res.data;
               let img = "[你画我猜," + url + "]";
               this.$emit("addGraffitiComment", img);
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -300,13 +298,11 @@
           });
       },
       saveQiniu(fd) {
-        this.$http.get(this.$constant.baseURL + "/qiniu/getUpToken", {key: fd.get("key")})
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/qiniu/getUpToken", {key: fd.get("key")}).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               fd.append("token", res.data);
 
-              this.$http.uploadQiniu(this.$constant.qiniuUrl, fd)
-                .then((res) => {
+              this.$http.uploadQiniu(this.$constant.qiniuUrl, fd).then((res) => {
                   if (!this.$common.isEmpty(res.key)) {
                     this.clearContext();
                     let url = this.$constant.qiniuDownload + res.key;
@@ -315,16 +311,14 @@
                     let img = "[你画我猜," + url + "]";
                     this.$emit("addGraffitiComment", img);
                   }
-                })
-                .catch((error) => {
+                }).catch((error) => {
                   this.$message({
                     message: error.message,
                     type: "error"
                   });
                 });
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

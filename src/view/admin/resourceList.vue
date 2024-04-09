@@ -3,27 +3,27 @@
     <div>
       <div class="handle-box">
         <el-select clearable v-model="pagination.resourceType" placeholder="资源类型" class="handle-select mrb10">
-          <el-option key="21" label="Video.Article" value="video/article"></el-option>
-          <el-option key="20" label="公共资源" value="assets"></el-option>
-          <el-option key="10" label="表情包" value="internetMeme"></el-option>
-          <el-option key="1" label="用户头像" value="userAvatar"></el-option>
-          <el-option key="2" label="文章封面" value="articleCover"></el-option>
-          <el-option key="3" label="文章图片" value="articlePicture"></el-option>
-          <el-option key="5" label="网站头像" value="webAvatar"></el-option>
-          <el-option key="4" label="背景图片" value="webBackgroundImage"></el-option>
-          <el-option key="6" label="随机头像" value="randomAvatar"></el-option>
-          <el-option key="7" label="随机封面" value="randomCover"></el-option>
-          <el-option key="8" label="画笔图片" value="graffiti"></el-option>
-          <el-option key="9" label="评论图片" value="commentPicture"></el-option>
-          <el-option key="11" label="聊天群头像" value="im/groupAvatar"></el-option>
-          <el-option key="12" label="群聊天图片" value="im/groupMessage"></el-option>
-          <el-option key="13" label="朋友聊天图片" value="im/friendMessage"></el-option>
-          <el-option key="14" label="音乐声音" value="funnyUrl"></el-option>
-          <el-option key="15" label="音乐封面" value="funnyCover"></el-option>
-          <el-option key="16" label="Love.Cover" value="love/bgCover"></el-option>
-          <el-option key="17" label="Love.Man" value="love/manCover"></el-option>
-          <el-option key="18" label="Love.Woman" value="love/womanCover"></el-option>
-          <el-option key="19" label="收藏夹封面" value="favoritesCover"></el-option>
+          <el-option key="21" label="Video.Article" value="video/article"/>
+          <el-option key="20" label="公共资源" value="assets"/>
+          <el-option key="10" label="表情包" value="internetMeme"/>
+          <el-option key="1" label="用户头像" value="userAvatar"/>
+          <el-option key="2" label="文章封面" value="articleCover"/>
+          <el-option key="3" label="文章图片" value="articlePicture"/>
+          <el-option key="5" label="网站头像" value="webAvatar"/>
+          <el-option key="4" label="背景图片" value="webBackgroundImage"/>
+          <el-option key="6" label="随机头像" value="randomAvatar"/>
+          <el-option key="7" label="随机封面" value="randomCover"/>
+          <el-option key="8" label="画笔图片" value="graffiti"/>
+          <el-option key="9" label="评论图片" value="commentPicture"/>
+          <el-option key="11" label="聊天群头像" value="im/groupAvatar"/>
+          <el-option key="12" label="群聊天图片" value="im/groupMessage"/>
+          <el-option key="13" label="朋友聊天图片" value="im/friendMessage"/>
+          <el-option key="14" label="音乐声音" value="funnyUrl"/>
+          <el-option key="15" label="音乐封面" value="funnyCover"/>
+          <el-option key="16" label="Love.Cover" value="love/bgCover"/>
+          <el-option key="17" label="Love.Man" value="love/manCover"/>
+          <el-option key="18" label="Love.Woman" value="love/womanCover"/>
+          <el-option key="19" label="收藏夹封面" value="favoritesCover"/>
         </el-select>
         <el-button type="primary" icon="el-icon-search" @click="search()">搜索</el-button>
         <el-button type="primary" @click="addResources()">新增资源</el-button>
@@ -46,11 +46,9 @@
           <template slot-scope="scope">
             <template v-if="!$common.isEmpty(scope.row.mimeType) && scope.row.mimeType.includes('image')">
               <el-image lazy :preview-src-list="[scope.row.path]" class="table-td-thumb" :src="scope.row.path"
-                        fit="cover"></el-image>
+                        fit="cover"/>
             </template>
-            <template v-else>
-              {{scope.row.path}}
-            </template>
+            <template v-else>{{scope.row.path}}</template>
           </template>
         </el-table-column>
 
@@ -111,7 +109,7 @@
 
 <script>
 
-  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
+  const uploadPicture = () => import( "@/components/common/uploadPicture.vue");
 
   export default {
     components: {
@@ -154,16 +152,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.post(this.$constant.baseURL + "/resource/deleteResource", {path: item.path}, true, false)
-            .then((res) => {
+          this.$http.post(this.$constant.baseURL + "/resource/deleteResource", {path: item.path}, true, false).then((res) => {
               this.pagination.current = 1;
               this.getResources();
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
@@ -177,8 +173,7 @@
         });
       },
 
-      addFile(res) {
-      },
+      addFile(res) {},
 
       addResources() {
         if (this.$common.isEmpty(this.pagination.resourceType)) {
@@ -196,14 +191,12 @@
         this.getResources();
       },
       getResources() {
-        this.$http.post(this.$constant.baseURL + "/resource/listResource", this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/resource/listResource", this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.resources = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -214,14 +207,12 @@
         this.$http.get(this.$constant.baseURL + "/resource/changeResourceStatus", {
           id: item.id,
           flag: item.status
-        }, true)
-          .then((res) => {
+        }, true).then((res) => {
             this.$message({
               message: "修改成功！",
               type: "success"
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

@@ -146,12 +146,12 @@
 </template>
 
 <script>
-  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
-  const comment = () => import( "../../components/comment/comment.vue");
-  const process = () => import( "../../components/common/process.vue");
-  const commentBox = () => import( "../../components/comment/commentBox.vue");
-  const proButton = () => import( "../../components/common/proButton.vue");
-  const videoPlayer = () => import( "../../components/funny/videoPlayer.vue");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
+  const comment = () => import( "@/components/comment/comment.vue");
+  const process = () => import( "@/components/common/process.vue");
+  const commentBox = () => import( "@/components/comment/commentBox.vue");
+  const proButton = () => import( "@/components/common/proButton.vue");
+  const videoPlayer = () => import( "@/components/funny/videoPlayer.vue");
   import MarkdownIt from 'markdown-it';
 
   export default {
@@ -266,8 +266,7 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/weiYan/deleteWeiYan", {id: id})
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + "/weiYan/deleteWeiYan", {id: id}).then((res) => {
               this.$message({type: 'success', message: '删除成功!'});
               this.getNews();
             }).catch((error) => {
@@ -287,8 +286,7 @@
           source: this.article.id
         };
 
-        this.$http.post(this.$constant.baseURL + "/weiYan/saveNews", weiYan)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/weiYan/saveNews", weiYan).then((res) => {
             this.weiYanDialogVisible = false;
             this.newsTime = "";
             this.getNews();
@@ -300,8 +298,7 @@
           });
       },
       getNews() {
-        this.$http.post(this.$constant.baseURL + "/weiYan/listNews", {current: 1, size: 9999, source: this.article.id})
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/weiYan/listNews", {current: 1, size: 9999, source: this.article.id}).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               res.data.records.forEach(c => {
                 c.content = c.content.replace(/\n{2,}/g, '<div style="height: 12px"></div>');
@@ -311,8 +308,7 @@
               });
               this.treeHoleList = res.data.records;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({message: error.message, type: "error"});
           });
       },
@@ -348,8 +344,7 @@
         headings.attr('id', (i, id) => id || 'toc-' + i);
       },
       getArticle(password) {
-        this.$http.get(this.$constant.baseURL + "/article/getArticleById", {id: this.id, password: password})
-          .then((res) => {
+        this.$http.get(this.$constant.baseURL + "/article/getArticleById", {id: this.id, password: password}).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.article = res.data;
               this.getNews();
@@ -368,8 +363,7 @@
                 this.subscribe = JSON.parse(this.$store.state.currentUser.subscribe).includes(this.article.labelId);
               }
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             if ("密码错误" === error.message.substr(0, 4)) {
               if (!this.$common.isEmpty(password)) {
                 this.$message({message: "密码错误，请重新输入！", type: "error"});

@@ -49,11 +49,11 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "../../components/funny/twoPoem.vue");
-  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
-  const treeHole = () => import( "../../components/page/treeHole.vue");
-  const proPage = () => import( "../../components/common/proPage.vue");
-  const commentBox = () => import( "../../components/comment/commentBox.vue");
+  const twoPoem = () => import( "@/components/funny/twoPoem.vue");
+  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
+  const treeHole = () => import( "@/components/page/treeHole.vue");
+  const proPage = () => import( "@/components/common/proPage.vue");
+  const commentBox = () => import( "@/components/comment/commentBox.vue");
 
   export default {
     components: {
@@ -119,11 +119,9 @@
           isPublic: this.isPublic
         };
 
-        this.$http.post(this.$constant.baseURL + "/weiYan/saveWeiYan", weiYan)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/weiYan/saveWeiYan", weiYan).then((res) => {
             this.getWeiYan();
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -146,16 +144,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/weiYan/deleteWeiYan", {id: id})
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + "/weiYan/deleteWeiYan", {id: id}).then((res) => {
               this.$message({
                 type: 'success',
                 message: '删除成功!'
               });
               this.pagination.current = 1;
               this.getWeiYan();
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
@@ -169,8 +165,7 @@
         });
       },
       getWeiYan() {
-        this.$http.post(this.$constant.baseURL + "/weiYan/listWeiYan", this.pagination)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + "/weiYan/listWeiYan", this.pagination).then((res) => {
             this.showFooter = false;
             if (!this.$common.isEmpty(res.data)) {
               res.data.records.forEach(c => {
@@ -186,8 +181,7 @@
               this.showFooter = true;
               this.$common.imgShow(".tree-hole-box .pictureReg");
             });
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"

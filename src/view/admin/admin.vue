@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import myHeader from "../../components/admin/common/myHeader.vue";
-  import sidebar from "../../components/admin/common/sidebar.vue";
+  import myHeader from "@/components/admin/common/myHeader.vue";
+  import sidebar from "@/components/admin/common/sidebar.vue";
 
   export default {
     components: {

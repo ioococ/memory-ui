@@ -84,14 +84,12 @@
         } else {
           url = "/admin/comment/user/list";
         }
-        this.$http.post(this.$constant.baseURL + url, this.pagination, true)
-          .then((res) => {
+        this.$http.post(this.$constant.baseURL + url, this.pagination, true).then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.comments = res.data.records;
               this.pagination.total = res.data.total;
             }
-          })
-          .catch((error) => {
+          }).catch((error) => {
             this.$message({
               message: error.message,
               type: "error"
@@ -120,16 +118,14 @@
           type: 'success',
           center: true
         }).then(() => {
-          this.$http.get(this.$constant.baseURL + url, {id: item.id}, true)
-            .then((res) => {
+          this.$http.get(this.$constant.baseURL + url, {id: item.id}, true).then((res) => {
               this.pagination.current = 1;
               this.getComments();
               this.$message({
                 message: "删除成功！",
                 type: "success"
               });
-            })
-            .catch((error) => {
+            }).catch((error) => {
               this.$message({
                 message: error.message,
                 type: "error"
