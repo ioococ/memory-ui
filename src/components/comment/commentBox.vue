@@ -44,7 +44,7 @@
                destroy-on-close
                center>
       <div>
-        <uploadPicture :prefix="'commentPicture'" @addPicture="addPicture" :maxSize="2"
+        <uploadPicture :prefix="'commentPicture'" @addPicture="addPicture" :maxSize="10"
                        :maxNumber="1"></uploadPicture>
       </div>
     </el-dialog>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  const emoji = () => import( "../common/emoji");
+  const emoji = () => import( "../funny/emoji.vue");
   const proButton = () => import( "../common/proButton");
   const uploadPicture = () => import( "../common/uploadPicture");
 

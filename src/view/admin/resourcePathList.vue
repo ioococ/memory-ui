@@ -71,7 +71,7 @@
                destroy-on-close
                center>
       <div>
-        <uploadPicture :isAdmin="true" :prefix="resourcePath.type + 'Cover'" @addPicture="addPicture" :maxSize="2"
+        <uploadPicture :isAdmin="true" :prefix="resourcePath.type + 'Cover'" @addPicture="addPicture" :maxSize="10"
                        :maxNumber="1"></uploadPicture>
       </div>
     </el-dialog>
@@ -101,7 +101,7 @@
           <div style="margin-bottom: 5px">标题：</div>
           <el-input maxlength="60" v-model="resourcePath.title"></el-input>
           <div style="margin-top: 10px;margin-bottom: 5px">分类：</div>
-          <el-input :disabled="!['friendUrl', 'lovePhoto', 'funny', 'favorites'].includes(resourcePath.type)"
+          <el-input :disabled="!['friendUrl', 'albums', 'funny', 'favorites'].includes(resourcePath.type)"
                     maxlength="30" v-model="resourcePath.classify"></el-input>
           <div style="margin-top: 10px;margin-bottom: 5px">简介：</div>
           <el-input :disabled="!['friendUrl', 'favorites'].includes(resourcePath.type)"
@@ -131,23 +131,15 @@
           </div>
           <div style="margin-top: 10px;margin-bottom: 5px">资源类型：</div>
           <el-select v-model="resourcePath.type" placeholder="资源路径类型" class="handle-select mrb10">
-            <el-option
-              v-for="(item, i) in resourceTypes"
-              :key="i"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
+            <el-option v-for="(item, i) in resourceTypes" :key="i" :label="item.label" :value="item.value"/>
           </el-select>
           <div style="margin-top: 10px;margin-bottom: 5px">备注：</div>
           <el-input :disabled="![].includes(resourcePath.type)"
-                    maxlength="1000" v-model="resourcePath.remark" type="textarea"></el-input>
+                    maxlength="1000" v-model="resourcePath.remark" type="textarea"/>
         </div>
         <div style="display: flex;margin-top: 30px" class="myCenter">
-          <proButton :info="'提交'"
-                     @click.native="addResourcePath()"
-                     :before="$constant.before_color_2"
-                     :after="$constant.after_color_2">
-          </proButton>
+          <proButton :info="'提交'" @click.native="addResourcePath()"
+                     :before="$constant.before_color_2" :after="$constant.after_color_2"/>
         </div>
       </div>
     </el-dialog>
@@ -156,8 +148,8 @@
 
 <script>
 
-  const uploadPicture = () => import( "../common/uploadPicture");
-  const proButton = () => import( "../common/proButton");
+  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
+  const proButton = () => import( "../../components/common/proButton.vue");
 
   export default {
     components: {
@@ -167,9 +159,9 @@
     data() {
       return {
         resourceTypes: [
-          {label: "友链", value: "friendUrl"},
-          {label: "恋爱图片", value: "lovePhoto"},
-          {label: "音乐", value: "funny"},
+          {label: "友人帐", value: "friendUrl"},
+          {label: "随手拍", value: "albums"},
+          {label: "乐曲库", value: "funny"},
           {label: "收藏夹", value: "favorites"}
         ],
         pagination: {

@@ -111,7 +111,7 @@
 
 <script>
 
-  const uploadPicture = () => import( "../common/uploadPicture");
+  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
 
   export default {
     components: {

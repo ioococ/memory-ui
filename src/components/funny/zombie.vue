@@ -6,40 +6,24 @@
         <div class="zombie__cheeks"></div>
         <div class="zombie__chin"></div>
         <div class="zombie__eyes">
-          <div class="eye left">
-            <div class="eyebrow"></div>
-          </div>
-          <div class="eye right">
-            <div class="eyebrow"></div>
-          </div>
+          <div class="eye left"><div class="eyebrow"></div></div>
+          <div class="eye right"><div class="eyebrow"></div></div>
         </div>
         <div class="zombie__nose"></div>
         <div class="zombie__mouth">
-          <div class="tooth">
-            <div class="tooth__top"></div>
-            <div class="tooth__bottom"></div>
-          </div>
+          <div class="tooth"><div class="tooth__top"></div><div class="tooth__bottom"></div></div>
         </div>
       </div>
       <div class="zombie__body">
         <div class="zombie__chest">
           <div class="zombie__arms">
-            <div class="arm left">
-              <div class="arm__bone"></div>
-              <div class="arm__sleeve"></div>
-            </div>
+            <div class="arm left"><div class="arm__bone"></div><div class="arm__sleeve"></div></div>
             <div class="arm right">
               <div class="arm__details">
                 <div class="arm__biceps"></div>
                 <div class="arm__forearm"></div>
                 <div class="hands">
-                  <div class="fingers">
-                    <div class="finger thumb"></div>
-                    <div class="finger middle"></div>
-                    <div class="finger index"></div>
-                    <div class="finger ring"></div>
-                    <div class="finger pinky"></div>
-                  </div>
+                  <div class="fingers"><div class="finger thumb"></div><div class="finger middle"></div><div class="finger index"></div><div class="finger ring"></div><div class="finger pinky"></div></div>
                 </div>
               </div>
               <div class="arm__sleeve"></div>

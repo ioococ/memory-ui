@@ -2,15 +2,11 @@
   <div>
     <!-- 评论框 -->
     <div style="margin-bottom: 40px">
-      <div class="comment-head">
-        <i class="el-icon-edit-outline" style="font-weight: bold;font-size: 22px;"></i> 写给未来的一封信
-      </div>
+      <div class="comment-head"><i class="el-icon-edit-outline" style="font-weight: bold;font-size: 22px;"></i> 评论区 </div>
       <div>
         <!-- 文字评论 -->
         <div v-show="!isGraffiti">
-          <commentBox @showGraffiti="isGraffiti = !isGraffiti"
-                      @submitComment="submitComment">
-          </commentBox>
+          <commentBox @showGraffiti="isGraffiti = !isGraffiti" @submitComment="submitComment"/>
         </div>
         <!-- 画笔 -->
 <!--        <div v-show="isGraffiti">-->
@@ -24,14 +20,9 @@
     <!-- 评论内容 -->
     <div v-if="comments.length > 0">
       <!-- 评论数量 -->
-      <div class="commentInfo-title">
-        <span style="font-size: 1.15rem">Comments | </span>
-        <span>{{ total }} 条留言</span>
-      </div>
+      <div class="commentInfo-title"><span style="font-size: 1.15rem">Comments | </span><span>{{ total }} 条留言</span></div>
       <!-- 评论详情 -->
-      <div id="comment-content" class="commentInfo-detail"
-           v-for="(item, index) in comments"
-           :key="index">
+      <div id="comment-content" class="commentInfo-detail" v-for="(item, index) in comments" :key="index">
         <!-- 头像 -->
         <el-avatar shape="square" class="commentInfo-avatar" :size="35" :src="item.avatar"></el-avatar>
 
@@ -40,7 +31,7 @@
           <div style="display: flex;justify-content: space-between">
             <div>
               <span class="commentInfo-username">{{ item.username }}</span>
-              <span class="commentInfo-master" v-if="item.userId === userId">主人翁</span>
+<!--              <span class="commentInfo-master" v-if="item.userId === userId">主人翁</span>-->
               <span class="commentInfo-other">{{ $common.getDateDiff(item.createTime) }}</span>
             </div>
             <div class="commentInfo-reply" @click="replyDialog(item, item)">
@@ -65,9 +56,7 @@
                     <span class="commentInfo-master" v-if="childItem.userId === userId">主人翁</span>
                     <span class="commentInfo-other">{{ $common.getDateDiff(childItem.createTime) }}</span>
                   </div>
-                  <div>
-                    <span class="commentInfo-reply" @click="replyDialog(childItem, item)">回复</span>
-                  </div>
+                  <div><span class="commentInfo-reply" @click="replyDialog(childItem, item)">回复</span></div>
                 </div>
                 <!-- 评论内容 -->
                 <div class="commentInfo-content">
@@ -81,22 +70,13 @@
             </div>
             <!-- 分页 -->
             <div class="pagination-wrap" v-if="item.childComments.records.length < item.childComments.total">
-              <div class="pagination"
-                   @click="toChildPage(item)">
-                展开
-              </div>
+              <div class="pagination" @click="toChildPage(item)">展开</div>
             </div>
           </div>
         </div>
       </div>
       <!-- 分页 -->
-      <proPage :current="pagination.current"
-               :size="pagination.size"
-               :total="pagination.total"
-               :buttonSize="6"
-               :color="$constant.commentPageColor"
-               @toPage="toPage">
-      </proPage>
+      <proPage :current="pagination.current" :size="pagination.size" :total="pagination.total" :buttonSize="6" :color="$constant.commentPageColor" @toPage="toPage"></proPage>
     </div>
 
     <div v-else class="myCenter" style="color: var(--greyFont)">
@@ -111,11 +91,7 @@
                :close-on-click-modal="false"
                destroy-on-close
                center>
-      <div>
-        <commentBox :disableGraffiti="true"
-                    @submitComment="submitReply">
-        </commentBox>
-      </div>
+      <div><commentBox :disableGraffiti="true" @submitComment="submitReply"/></div>
     </el-dialog>
   </div>
 </template>
@@ -132,15 +108,9 @@
       proPage
     },
     props: {
-      source: {
-        type: Number
-      },
-      type: {
-        type: String
-      },
-      userId: {
-        type: Number
-      }
+      source: {type: Number},
+      type: {type: String},
+      userId: {type: Number}
     },
     data() {
       return {

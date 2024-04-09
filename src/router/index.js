@@ -9,103 +9,37 @@ VueRouter.prototype.push = function push(location) {
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    component: () => import('../components/home'),
-    children: [{
-      path: "/",
-      name: "index",
-      component: () => import('../components/index')
-    }, {
-      path: "/sort",
-      name: "sort",
-      component: () => import('../components/sort')
-    }, {
-      path: "/article",
-      name: "article",
-      component: () => import('../components/article')
-    }, {
-      path: "/weiYan",
-      name: "weiYan",
-      component: () => import('../components/weiYan')
-    }, {
-      path: "/travel",
-      name: "travel",
-      component: () => import('../components/travel')
-    }, {
-      path: "/message",
-      name: "message",
-      component: () => import('../components/message')
-    }, {
-      path: "/about",
-      name: "about",
-      component: () => import('../components/about.vue')
-    }, {
-      path: "/user",
-      name: "user",
-      component: () => import('../components/user')
+  { path: '/', component: () => import('@/view/page/home.vue'),
+    children: [
+      { path: "/", name: "index", component: () => import('@/view/page/index.vue') },
+      { path: "/sort", name: "sort", component: () => import('@/view/page/sort.vue') },
+      { path: "/article", name: "article", component: () => import('@/view/page/article.vue') },
+      { path: "/diary", name: "diary", component: () => import('@/view/page/diary.vue') },
+      { path: "/weiYan", name: "weiYan", component: () => import('@/view/page/weiYan.vue') },
+      { path: "/love", name: "love", component: () => import('@/view/page/love.vue') },
+      { path: "/travel", name: "travel", component: () => import('@/view/page/travel.vue') },
+      { path: "/message", name: "message", component: () => import('@/view/page/message.vue') },
+      { path: "/about", name: "about", component: () => import('@/view/page/about.vue') },
+      { path: "/user", name: "user", component: () => import('@/view/page/user.vue') }
+    ]
+  },
+  { path: '/admin', redirect: '/welcome', meta: {requiresAuth: true}, component: () => import('../view/admin/admin.vue'),
+    children: [
+      { path: '/welcome', name: 'welcome', component: () => import('../view/admin/welcome.vue') },
+      { path: '/main', name: 'main', component: () => import('../view/admin/main.vue') },
+      { path: '/webEdit', name: 'webEdit', component: () => import('../view/admin/webEdit.vue') },
+      { path: '/userList', name: 'userList', component: () => import('../view/admin/userList.vue') },
+      { path: '/postList', name: 'postList', component: () => import('../view/admin/postList.vue') },
+      { path: '/postEdit', name: 'postEdit', component: () => import('../view/admin/postEdit.vue') },
+      { path: '/sortList', name: 'sortList', component: () => import('../view/admin/sortList.vue') },
+      { path: '/commentList', name: 'commentList', component: () => import('../view/admin/commentList.vue') },
+      { path: '/treeHoleList', name: 'treeHoleList', component: () => import('../view/admin/treeHoleList.vue') },
+      { path: '/resourceList', name: 'resourceList', component: () => import('../view/admin/resourceList.vue') },
+      { path: '/loveList', name: 'loveList', component: () => import('../view/admin/loveList.vue') },
+      { path: '/resourcePathList', name: 'resourcePathList', component: () => import('../view/admin/resourcePathList.vue')
     }]
   },
-  {
-    path: '/admin',
-    redirect: '/welcome',
-    meta: {requiresAuth: true},
-    component: () => import('../components/admin/admin'),
-    children: [{
-      path: '/welcome',
-      name: 'welcome',
-      component: () => import('../components/admin/welcome')
-    }, {
-      path: '/main',
-      name: 'main',
-      component: () => import('../components/admin/main')
-    }, {
-      path: '/webEdit',
-      name: 'webEdit',
-      component: () => import('../components/admin/webEdit')
-    }, {
-      path: '/userList',
-      name: 'userList',
-      component: () => import('../components/admin/userList')
-    }, {
-      path: '/postList',
-      name: 'postList',
-      component: () => import('../components/admin/postList')
-    }, {
-      path: '/postEdit',
-      name: 'postEdit',
-      component: () => import('../components/admin/postEdit')
-    }, {
-      path: '/sortList',
-      name: 'sortList',
-      component: () => import('../components/admin/sortList')
-    }, {
-      path: '/commentList',
-      name: 'commentList',
-      component: () => import('../components/admin/commentList')
-    }, {
-      path: '/treeHoleList',
-      name: 'treeHoleList',
-      component: () => import('../components/admin/treeHoleList')
-    }, {
-      path: '/resourceList',
-      name: 'resourceList',
-      component: () => import('../components/admin/resourceList')
-    }, {
-      path: '/loveList',
-      name: 'loveList',
-      component: () => import('../components/admin/loveList')
-    }, {
-      path: '/resourcePathList',
-      name: 'resourcePathList',
-      component: () => import('../components/admin/resourcePathList')
-    }]
-  },
-  {
-    path: '/verify',
-    name: 'verify',
-    component: () => import('../components/admin/verify')
-  }
+  { path: '/verify', name: 'verify', component: () => import('../view/admin/verify.vue') }
 ]
 
 const router = new VueRouter({
@@ -119,10 +53,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!Boolean(localStorage.getItem("adminToken"))) {
-      next({
-        path: '/verify',
-        query: {redirect: to.fullPath}
-      });
+      next({path: '/verify', query: {redirect: to.fullPath}});
     } else {
       next();
     }

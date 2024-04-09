@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  const proButton = () => import( "../common/proButton");
+  const proButton = () => import( "../../components/common/proButton.vue");
 
   export default {
     components: {

@@ -7,14 +7,11 @@ export default {
   // imBaseURL: "https://poetize.cn/im",
   // webURL: "https://poetize.cn",
 
-  live2d_path: "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/",
-  cdnPath: "https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/",
-  waifuPath: "/webInfo/getWaifuJson",
   hitokoto: "https://v1.hitokoto.cn",
   shehui: "https://api.oick.cn/yulu/api.php",
   tocbot: "https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js",
   jinrishici: "https://v1.jinrishici.com/all.json",
-  random_image: "https://s1.ax1x.com/2022/12/04/zsKgDs.jpg?",
+  random_image: "https://0w0-0v0.s3.ap-northeast-2.amazonaws.com/images/zsKgDs.jpg?",
   //前后端定义的密钥，AES使用16位
   cryptojs_key: "aoligeimeimaobin",
   qiniuUrl: "https://upload.qiniup.com",
@@ -30,7 +27,7 @@ export default {
 
   loveWeiYan: "https://s1.ax1x.com/2022/12/04/zsKgDs.jpg",
   loveMessage: "https://s1.ax1x.com/2022/12/04/zsKgDs.jpg",
-  lovePhoto: "https://s1.ax1x.com/2022/12/04/zsKh5V.jpg",
+  albums: "https://s1.ax1x.com/2022/12/04/zsKh5V.jpg",
   loveLike: "https://cdn.cbd.int//hexo-butterfly-envelope/lib/violet.jpg",
   loveSortId: 1,
   loveLabelId: 1,
