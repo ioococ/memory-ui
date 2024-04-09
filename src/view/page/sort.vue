@@ -33,10 +33,10 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "@/components/funny/twoPoem.vue");
-  const proTag = () => import( "@/components/common/proTag.vue");
-  const articleList = () => import( "@/components/page/articleList.vue");
-  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
+  const twoPoem = () => import("@/components/funny/twoPoem.vue");
+  const proTag = () => import("@/components/common/proTag.vue");
+  const articleList = () => import("@/components/page/articleList.vue");
+  const myFooter = () => import("@/components/skeleton/myFooter.vue");
 
   export default {
     components: {

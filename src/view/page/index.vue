@@ -84,13 +84,13 @@
   </div>
 </template>
 <script>
-  const loader = () => import( "@/components/common/loader.vue");
-  const zombie = () => import( "@/components/funny/zombie.vue");
-  const printer = () => import( "@/components/funny/printer.vue");
-  const articleList = () => import( "@/components/page/articleList.vue");
-  const sortArticle = () => import( "@/components/page/sortArticle.vue");
-  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
-  const myAside = () => import( "@/components/skeleton/myAside.vue");
+  const loader = () => import("@/components/common/loader.vue");
+  const zombie = () => import("@/components/funny/zombie.vue");
+  const printer = () => import("@/components/funny/printer.vue");
+  const articleList = () => import("@/components/page/articleList.vue");
+  const sortArticle = () => import("@/components/page/sortArticle.vue");
+  const myFooter = () => import("@/components/skeleton/myFooter.vue");
+  const myAside = () => import("@/components/skeleton/myAside.vue");
 
   export default {
     components: {

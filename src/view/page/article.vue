@@ -146,12 +146,12 @@
 </template>
 
 <script>
-  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
-  const comment = () => import( "@/components/comment/comment.vue");
-  const process = () => import( "@/components/common/process.vue");
-  const commentBox = () => import( "@/components/comment/commentBox.vue");
-  const proButton = () => import( "@/components/common/proButton.vue");
-  const videoPlayer = () => import( "@/components/funny/videoPlayer.vue");
+  const myFooter = () => import("@/components/skeleton/myFooter.vue");
+  const comment = () => import("@/components/comment/comment.vue");
+  const process = () => import("@/components/common/process.vue");
+  const commentBox = () => import("@/components/comment/commentBox.vue");
+  const proButton = () => import("@/components/common/proButton.vue");
+  const videoPlayer = () => import("@/components/funny/videoPlayer.vue");
   import MarkdownIt from 'markdown-it';
 
   export default {

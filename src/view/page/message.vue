@@ -33,8 +33,8 @@
 <script>
   import Email from "@/view/page/email.vue";
 
-  const comment = () => import( "@/components/comment/comment.vue");
-  const myFooter = () => import( "@/components/skeleton/myFooter.vue");
+  const comment = () => import("@/components/comment/comment.vue");
+  const myFooter = () => import("@/components/skeleton/myFooter.vue");
 
   export default {
     components: {

@@ -148,8 +148,8 @@
 
 <script>
 
-  const uploadPicture = () => import( "@/components/common/uploadPicture.vue");
-  const proButton = () => import( "@/components/common/proButton.vue");
+  const uploadPicture = () => import("@/components/common/uploadPicture.vue");
+  const proButton = () => import("@/components/common/proButton.vue");
 
   export default {
     components: {
