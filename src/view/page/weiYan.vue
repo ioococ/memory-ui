@@ -49,11 +49,11 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "./common/twoPoem");
-  const myFooter = () => import( "./common/myFooter");
-  const treeHole = () => import( "./common/treeHole");
-  const proPage = () => import( "./common/proPage");
-  const commentBox = () => import( "./comment/commentBox");
+  const twoPoem = () => import( "../../components/funny/twoPoem.vue");
+  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
+  const treeHole = () => import( "../../components/page/treeHole.vue");
+  const proPage = () => import( "../../components/common/proPage.vue");
+  const commentBox = () => import( "../../components/comment/commentBox.vue");
 
   export default {
     components: {

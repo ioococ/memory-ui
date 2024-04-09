@@ -22,12 +22,8 @@
       <div class="article-wrap">
         <articleList :articleList="articles"></articleList>
         <div class="pagination-wrap">
-          <div @click="pageArticles()" class="pagination" v-if="pagination.total !== articles.length">
-            下一页
-          </div>
-          <div v-else style="user-select: none">
-            ~~到底啦~~
-          </div>
+          <div @click="pageArticles()" class="pagination" v-if="pagination.total !== articles.length">下一页</div>
+          <div v-else style="user-select: none">~~到底啦~~</div>
         </div>
       </div>
       <!-- 页脚 -->
@@ -37,10 +33,10 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "./common/twoPoem");
-  const proTag = () => import( "./common/proTag");
-  const articleList = () => import( "./articleList");
-  const myFooter = () => import( "./common/myFooter");
+  const twoPoem = () => import( "../../components/funny/twoPoem.vue");
+  const proTag = () => import( "../../components/common/proTag.vue");
+  const articleList = () => import( "../../components/page/articleList.vue");
+  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
 
   export default {
     components: {

@@ -1,10 +1,7 @@
 <template>
   <div>
     <div>
-      <el-image style="animation: header-effect 2s"
-                class="background-image"
-                v-once
-                lazy
+      <el-image style="animation: header-effect 2s" class="background-image" v-once lazy
                 :src="$constant.random_image+new Date()+Math.floor(Math.random()*10)"
                 fit="cover">
         <div slot="error" class="image-slot background-image-error"></div>
@@ -13,17 +10,8 @@
       <div class="message-in" style="text-align: center">
         <h2 class="message-title">树洞</h2>
         <div>
-          <input class="message-input"
-                 type="text"
-                 style="outline: none;width: 70%"
-                 placeholder="留下点什么啦~"
-                 v-model="messageContent"
-                 @click="show = true"
-                 maxlength="60"/>
-          <button v-show="show"
-                  style="margin-left: 12px;cursor: pointer;width: 20%"
-                  @click="submitMessage"
-                  class="message-input">发射
+          <input class="message-input" type="text" style="outline: none;width: 70%" placeholder="留下点什么啦~" v-model="messageContent" @click="show = true" maxlength="60"/>
+          <button v-show="show" style="margin-left: 12px;cursor: pointer;width: 20%" @click="submitMessage" class="message-input">发射
           </button>
         </div>
       </div>
@@ -34,7 +22,8 @@
     </div>
     <div class="comment-wrap">
       <div class="comment-content">
-        <comment :source="$constant.source" :type="'message'" :userId="$constant.userId"></comment>
+        <email></email>
+<!--        <comment :source="$constant.source" :type="'message'" :userId="$constant.userId"></comment>-->
       </div>
       <myFooter></myFooter>
     </div>
@@ -42,11 +31,14 @@
 </template>
 
 <script>
-  const comment = () => import( "./comment/comment");
-  const myFooter = () => import( "./common/myFooter");
+  import Email from "@/view/page/email.vue";
+
+  const comment = () => import( "../../components/comment/comment.vue");
+  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
 
   export default {
     components: {
+      Email,
       comment,
       myFooter
     },
@@ -176,7 +168,7 @@
   }
 
   .comment-content {
-    max-width: 800px;
+    /*max-width: 1200px;*/
     margin: 0 auto;
     padding: 40px 20px;
   }

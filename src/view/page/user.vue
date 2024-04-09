@@ -1,15 +1,10 @@
 <template>
   <div>
     <!-- 登陆和注册 -->
-    <div v-if="$common.isEmpty(currentUser)"
-         class="myCenter in-up-container my-animation-hideToShow">
+    <div v-if="$common.isEmpty(currentUser)" class="myCenter in-up-container my-animation-hideToShow">
       <!-- 背景图片 -->
-      <el-image class="my-el-image"
-                style="position: absolute"
-                v-once
-                lazy
-                :src="$constant.random_image+new Date()+Math.floor(Math.random()*10)"
-                fit="cover">
+      <el-image class="my-el-image" style="position: absolute" v-once lazy
+                :src="$constant.random_image+new Date()+Math.floor(Math.random()*10)" fit="cover">
         <div slot="error" class="image-slot"></div>
       </el-image>
       <div class="in-up" id="loginAndRegist">
@@ -203,8 +198,8 @@
 </template>
 
 <script>
-  const proButton = () => import( "./common/proButton");
-  const uploadPicture = () => import( "./common/uploadPicture");
+  const proButton = () => import( "../../components/common/proButton.vue");
+  const uploadPicture = () => import( "../../components/common/uploadPicture.vue");
 
   export default {
     components: {

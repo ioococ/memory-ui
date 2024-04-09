@@ -22,8 +22,8 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "./common/twoPoem");
-  const myFooter = () => import( "./common/myFooter");
+  const twoPoem = () => import( "../../components/funny/twoPoem.vue");
+  const myFooter = () => import( "../../components/skeleton/myFooter.vue");
 
   export default {
     components: {
@@ -33,11 +33,9 @@
     data() {
       return {
         sayShow: false,
-        sayContent: [
-          {
-            "talk": ["Hi！👋", "今天的心情如何呢~",
-              "赶紧记录下来吧！"],
-            "reply": ["元气满满！😎","还不错！😃"]
+        sayContent: [{
+            "talk": ["Hi！👋", "今天的心情如何呢~", "赶紧记录下来吧！"],
+            "reply": ["元气满满！😎", "还不错！😃", "平静 😐", "低迷 😌", "很难说 😶", "怒火中烧！😡"]
           }
         ],
         sayIndex: 0
@@ -55,9 +53,7 @@
       }, 2000);
     },
 
-    mounted() {
-
-    },
+    mounted() {},
 
     methods: {
       answer(index, value) {
@@ -67,11 +63,11 @@
         let frag = document.createRange().createContextualFragment(htmlStr);
         document.getElementById("say-container").appendChild(frag);
         if (index === 0) {
-          setTimeout(() => {
-            this.say();
-          }, 500);
+          setTimeout(() => {this.say();}, 500);
         } else {
-          let htmlStr = `<div class="say-left my-animation-slide-bottom"><span class="say-item-left">加油噢！</span></div>`;
+          let htmlStr = `<div class="say-left my-animation-slide-bottom">
+                            <span class="say-item-left">加油噢！</span>
+                        </div>`;
           let frag = document.createRange().createContextualFragment(htmlStr);
           document.getElementById("say-container").appendChild(frag);
         }
@@ -86,18 +82,29 @@
               if (talk.length === index + 1) {
                 if (!this.$common.isEmpty(this.sayContent[this.sayIndex].reply)) {
                   setTimeout(() => {
-                    if (this.sayContent[this.sayIndex].reply.length === 2) {
+                    if (this.sayContent[this.sayIndex].reply.length === 6) {
                       let reply0 = this.sayContent[this.sayIndex].reply[0];
                       let reply1 = this.sayContent[this.sayIndex].reply[1];
-                      let htmlStr = `<div class="say-left my-animation-slide-bottom"><span class="say-select">${reply0}</span><span class="say-select">${reply1}</span></div>`;
+                      let reply2 = this.sayContent[this.sayIndex].reply[2];
+                      let reply3 = this.sayContent[this.sayIndex].reply[3];
+                      let reply4 = this.sayContent[this.sayIndex].reply[4];
+                      let reply5 = this.sayContent[this.sayIndex].reply[5];
+                      let htmlStr = `<div class="say-left my-animation-slide-bottom">
+                                    <span class="say-select">${reply0}</span>
+                                    <span class="say-select">${reply1}</span>
+                                    <span class="say-select">${reply2}</span>
+                                    <span class="say-select">${reply3}</span>
+                                    <span class="say-select">${reply4}</span>
+                                    <span class="say-select">${reply5}</span>
+                                    </div>`;
                       let frag = document.createRange().createContextualFragment(htmlStr);
                       document.getElementById("say-container").appendChild(frag);
-                      document.getElementsByClassName("say-select")[0].onclick = () => {
-                        this.answer(0, reply0);
-                      }
-                      document.getElementsByClassName("say-select")[1].onclick = () => {
-                        this.answer(1, reply1);
-                      }
+                      document.getElementsByClassName("say-select")[0].onclick = () => {this.answer(0, reply0);}
+                      document.getElementsByClassName("say-select")[1].onclick = () => {this.answer(1, reply1);}
+                      document.getElementsByClassName("say-select")[2].onclick = () => {this.answer(2, reply2);}
+                      document.getElementsByClassName("say-select")[3].onclick = () => {this.answer(3, reply3);}
+                      document.getElementsByClassName("say-select")[4].onclick = () => {this.answer(4, reply4);}
+                      document.getElementsByClassName("say-select")[5].onclick = () => {this.answer(5, reply5);}
                     } else if (this.sayContent[this.sayIndex].reply.length === 1) {
                       let reply0 = this.sayContent[this.sayIndex].reply[0];
                       let htmlStr = `<div class="say-left my-animation-slide-bottom"><span class="say-select">${reply0}</span></div>`;
