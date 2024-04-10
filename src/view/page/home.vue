@@ -43,7 +43,6 @@
 
 <script>
   import mousedown from '../../utils/mousedown';
-  import constant from "../../utils/constant";
   const myHeader = () => import("@/components/skeleton/myHeader.vue");
 
   export default {

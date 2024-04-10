@@ -26,7 +26,7 @@
           <el-dropdown :hide-timeout="500" placement="bottom">
             <li><div class="my-menu">📒 <span>记忆空间</span></div></li>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="$router.push({path: '/travel'})">闲言语</el-dropdown-item>
+              <el-dropdown-item @click.native="$router.push({path: '/sort?id=1'})">闲言语</el-dropdown-item>
               <el-dropdown-item @click.native="$router.push({path: '/diary'})">日记本</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
