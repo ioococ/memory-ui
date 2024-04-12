@@ -55,6 +55,38 @@ export default {
     "linear-gradient(120deg, rgba(91, 39, 255, 1) 0%, rgba(0, 212, 255, 1) 100%)"
   ],
 
+  diaryCategories: {
+    "life": { "name": "生活", "color": "#FF9500", "english": "life" },
+    "study": { "name": "学习", "color": "#4CD964", "english": "study" },
+    "event": { "name": "大事", "color": "#FF3B30", "english": "event" },
+    "sport": { "name": "运动", "color": "#FFCC00", "english": "sport" },
+    "todo": { "name": "待办", "color": "#24C5FF", "english": "todo" },
+    "work": { "name": "工作", "color": "#007AFF", "english": "work" },
+    "game": { "name": "游戏", "color": "#5AC8FA", "english": "game" },
+    "film": { "name": "电影", "color": "#FF2D70", "english": "film" },
+    "article": { "name": "文章", "color": "#CC73E1", "english": "article" },
+    "bill": { "name": "账单", "color": "#8bc34a", "english": "bill" },
+    "memo": { "name": "备忘", "color": "#BABABA", "english": "memo" },
+    "play": { "name": "剧本", "color": "#00AAFF", "english": "play" },
+    "sentiment": { "name": "情感", "color": "#00C975", "english": "sentiment" },
+    "week": { "name": "周报", "color": "#5856D6", "english": "week" }
+  },
+  weather: {
+    "sunny": { "id": 1, "name": "晴天", "english": "sunny" },
+    "breezy": { "id": 2, "name": "微风", "english": "breezy" },
+    "windy": { "id": 3, "name": "大风", "english": "windy" },
+    "rainy": { "id": 4, "name": "雨天", "english": "rainy" },
+    "snowy": { "id": 5, "name": "雪天", "english": "snowy" },
+    "hail": { "id": 6, "name": "冰雹", "english": "hail" },
+    "cloudy": { "id": 7, "name": "多云", "english": "cloudy" },
+    "dull": { "id": 8, "name": "阴天", "english": "dull" },
+    "misty": { "id": 9, "name": "雾天", "english": "misty" },
+    "rainbow": { "id": 11, "name": "彩虹", "english": "rainbow" },
+    "sandstorm": { "id": 12, "name": "沙尘暴", "english": "sandstorm" },
+    "thunderstorm": { "id": 13, "name": "雷暴", "english": "thunderstorm" },
+    "tornado": { "id": 14, "name": "龙卷风", "english": "tornado" },
+  },
+
   pageColor: "#ee7752",
   commentPageColor: "#23d5ab",
   userId: 1,

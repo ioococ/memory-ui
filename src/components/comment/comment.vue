@@ -97,9 +97,9 @@
 </template>
 
 <script>
-  // const graffiti = () => import( "./graffiti");
-  const commentBox = () => import( "./commentBox");
-  const proPage = () => import( "../common/proPage");
+  // const graffiti = () => import("./graffiti");
+  const commentBox = () => import("./commentBox");
+  const proPage = () => import("../common/proPage");
 
   export default {
     components: {

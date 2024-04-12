@@ -6,7 +6,7 @@
     </div>
 
     <!-- 回到顶部按钮 -->
-<!--    <div href="#" class="cd-top" v-if="!$common.mobile()" @click="toTop()"></div>-->
+    <div href="#" class="cd-top" v-if="!$common.mobile()" @click="toTop()"></div>
 
     <div class="toolButton">
       <div class="backTop" v-if="toolButton" @click="toTop()">
@@ -38,11 +38,59 @@
 
     <!-- 图片预览 -->
     <div id="outerImg"><div id="innerImg" style="position:absolute"><img id="bigImg" src=""/></div></div>
+
+    <el-drawer :visible.sync="toolbarDrawer" :show-close="false" size="65%" custom-class="toolbarDrawer" title="欢迎光临" direction="ltr">
+      <div>
+        <ul class="small-menu">
+          <li @click="smallMenu({path: '/'})"><div>🏡 <span>首页</span></div></li>
+
+          <li><div>📒 <span>记录</span></div>
+            <div>
+              <div v-for="(menu, index) in sortInfo" :key="index" class="sortMenu" @click="smallMenu({path: '/sort', query: {sortId: menu.id}})">{{menu.sortName}}</div>
+            </div>
+          </li>
+
+          <!-- 爱情买卖 -->
+          <li @click="smallMenu({path: '/love'})"><div>💋 <span>爱情买卖</span></div></li>
+
+          <!-- 旅拍 -->
+          <li @click="smallMenu({path: '/travel'})"><div>🌏 <span>旅拍</span></div></li>
+
+          <!-- 百宝箱 -->
+          <li @click="smallMenu({path: '/favorite'})"><div>🧰 <span>百宝箱</span></div></li>
+
+          <!-- 聊天室 -->
+          <li @click="goIm()"><div>💬 <span>非礼勿言</span></div></li>
+          <!-- 留言 -->
+          <li @click="smallMenu({path: '/message'})"><div>📪 <span>留言</span></div></li>
+          <!-- 友人帐 -->
+          <li @click="smallMenu({path: '/friend'})"><div>💃 <span>友人帐</span></div></li>
+
+          <!-- 关于 -->
+          <li @click="smallMenu({path: '/about'})"><div>🐟 <span>关于</span></div></li>
+
+          <template v-if="$common.isEmpty($store.state.currentUser)">
+            <li @click="smallMenu({path: '/user'})">
+              <div><i class="fa fa-sign-in" aria-hidden="true"></i><span>&nbsp;登录</span></div>
+            </li>
+          </template>
+          <template v-else>
+            <li @click="smallMenu({path: '/user'})">
+              <div><i class="fa fa-user-circle" aria-hidden="true"></i><span>&nbsp;个人中心</span></div>
+            </li>
+            <li @click="smallMenuLogout()">
+              <div><i class="fa fa-sign-out" aria-hidden="true"></i><span>&nbsp;退出</span></div>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </el-drawer>
+
   </div>
 </template>
 
 <script>
-  import mousedown from '../../utils/mousedown';
+  import mousedown from '@/utils/mousedown';
   const myHeader = () => import("@/components/skeleton/myHeader.vue");
 
   export default {

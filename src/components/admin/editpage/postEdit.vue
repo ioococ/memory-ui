@@ -12,11 +12,11 @@
     <el-form :model="article" :rules="rules" ref="ruleForm" label-width="150px"
              class="demo-ruleForm">
       <el-form-item label="标题" prop="articleTitle">
-        <el-input maxlength="30" v-model="article.articleTitle"></el-input>
+        <el-input maxlength="30" v-model="article.articleTitle"/>
       </el-form-item>
 
       <el-form-item label="视频链接" prop="videoUrl">
-        <el-input maxlength="1000" v-model="article.videoUrl"></el-input>
+        <el-input maxlength="1000" v-model="article.videoUrl"/>
       </el-form-item>
 
       <el-form-item label="内容" prop="articleContent">
@@ -48,16 +48,16 @@
       </el-form-item>
 
       <el-form-item v-if="article.viewStatus === false" label="不可见时的访问密码" prop="password">
-        <el-input maxlength="30" v-model="article.password"></el-input>
+        <el-input maxlength="30" v-model="article.password"/>
       </el-form-item>
 
       <el-form-item v-if="article.viewStatus === false" label="密码提示" prop="tips">
-        <el-input maxlength="60" v-model="article.tips"></el-input>
+        <el-input maxlength="60" v-model="article.tips"/>
       </el-form-item>
 
       <el-form-item label="封面" prop="articleCover">
         <div style="display: flex">
-          <el-input v-model="article.articleCover"></el-input>
+          <el-input v-model="article.articleCover"/>
           <el-image class="table-td-thumb"
                     lazy
                     style="margin-left: 10px"
@@ -124,30 +124,14 @@
         labels: [],
         labelsTemp: [],
         rules: {
-          articleTitle: [
-            {required: true, message: '请输入标题', trigger: 'change'}
-          ],
-          articleContent: [
-            {required: true, message: '请输入内容', trigger: 'change'}
-          ],
-          commentStatus: [
-            {required: true, message: '是否启用评论', trigger: 'change'}
-          ],
-          recommendStatus: [
-            {required: true, message: '是否推荐', trigger: 'change'}
-          ],
-          viewStatus: [
-            {required: true, message: '是否可见', trigger: 'change'}
-          ],
-          articleCover: [
-            {required: true, message: '封面', trigger: 'change'}
-          ],
-          sortId: [
-            {required: true, message: '分类', trigger: 'change'}
-          ],
-          labelId: [
-            {required: true, message: '标签', trigger: 'blur'}
-          ]
+          articleTitle: [{required: true, message: '请输入标题', trigger: 'change'}],
+          articleContent: [{required: true, message: '请输入内容', trigger: 'change'}],
+          commentStatus: [{required: true, message: '是否启用评论', trigger: 'change'}],
+          recommendStatus: [{required: true, message: '是否推荐', trigger: 'change'}],
+          viewStatus: [{required: true, message: '是否可见', trigger: 'change'}],
+          articleCover: [{required: true, message: '封面', trigger: 'change'}],
+          sortId: [{required: true, message: '分类', trigger: 'change'}],
+          labelId: [{required: true, message: '标签', trigger: 'blur'}]
         }
       }
     },

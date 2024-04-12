@@ -13,7 +13,7 @@
       <!-- 手机导航按钮 -->
       <div v-if="$common.mobile() || mobile"
            class="toolbar-mobile-menu"
-           @click="toolbarDrawer = !toolbarDrawer"
+           @click="$parent.toolbarDrawer = !$parent.toolbarDrawer"
            :class="{ enter: toolbar.enter }">
         <i class="el-icon-s-operation"></i>
       </div>
@@ -39,6 +39,9 @@
 
           <!-- 每日心情 -->
           <li @click="$router.push({path: '/about'})"><div class="my-menu">😃 <span>心情驿站</span></div></li>
+
+          <!-- 后台 -->
+          <li @click="goAdmin()"><div class="my-menu">💻️ <span>后台</span></div></li>
           <!-- 个人中心 -->
           <li>
             <el-dropdown placement="bottom">
@@ -72,13 +75,13 @@ import constant from "@/utils/constant";
 export default {
   data() {
     return {
-      toolButton: false,
-      hoverEnter: false,
-      mouseAnimation: false,
-      isDark: false,
-      scrollTop: 0,
-      toolbarDrawer: false,
-      mobile: false
+      toolButton: this.$parent.toolButton,
+      hoverEnter: this.$parent.hoverEnter,
+      mouseAnimation: this.$parent.mouseAnimation,
+      isDark: this.$parent.isDark,
+      scrollTop: this.$parent.scrollTop,
+      toolbarDrawer: this.$parent.toolbarDrawer,
+      mobile: this.$parent.mobile
     }
   },
   mounted() {
@@ -103,26 +106,6 @@ export default {
     window.removeEventListener("scroll", this.onScrollPage);
   },
   watch: {
-    scrollTop(scrollTop, oldScrollTop) {
-      //如果滑动距离超过屏幕高度三分之一视为进入页面，背景改为白色
-      let enter = scrollTop > window.innerHeight / 2;
-      const top = scrollTop - oldScrollTop < 0;
-      let isShow = scrollTop - window.innerHeight > 30;
-      this.toolButton = isShow;
-      if (isShow && !this.$common.mobile()) {
-        if (window.innerHeight > 950) {$(".cd-top").css("top", "0");}
-        else {$(".cd-top").css("top", window.innerHeight - 950 + "px");}
-      } else if (!isShow && !this.$common.mobile()) {
-        $(".cd-top").css("top", "-900px");
-      }
-
-      //导航栏显示与颜色
-      let toolbarStatus = {
-        enter: enter,
-        visible: top,
-      };
-      this.$store.commit("changeToolbarStatus", toolbarStatus);
-    },
   },
   created() {
     let toolbarStatus = {
@@ -130,7 +113,7 @@ export default {
       visible: true,
     };
     this.$store.commit("changeToolbarStatus", toolbarStatus);
-    this.getWebInfo();
+    this.$parent.getWebInfo();
     this.getSortInfo();
 
     this.mobile = document.body.clientWidth < 1100;
@@ -150,6 +133,19 @@ export default {
     }
   },
   methods: {
+    smallMenu(data) {
+      this.$router.push(data)
+      this.$parent.toolbarDrawer = false;
+    },
+
+    smallMenuLogout() {
+      this.logout();
+      this.$parent.toolbarDrawer = false;
+    },
+
+    goAdmin() {
+      window.open(this.$constant.webURL + "/admin");
+    },
     logout() {
       this.$http.get(this.$constant.baseURL + "/user/logout").then((res) => {
         }).catch((error) => {
@@ -161,19 +157,6 @@ export default {
       this.$store.commit("loadCurrentUser", {});
       localStorage.removeItem("userToken");
       this.$router.push({path: '/'});
-    },
-    getWebInfo() {
-      this.$http.get(this.$constant.baseURL + "/webInfo/getWebInfo").then((res) => {
-          if (!this.$common.isEmpty(res.data)) {
-            this.$store.commit("loadWebInfo", res.data);
-            localStorage.setItem("defaultStoreType", res.data.defaultStoreType);
-          }
-        }).catch((error) => {
-          this.$message({
-            message: error.message,
-            type: "error"
-          });
-        });
     },
     getSortInfo() {
       this.$http.get(this.$constant.baseURL + "/webInfo/getSortInfo").then((res) => {
@@ -190,11 +173,7 @@ export default {
     },
     isDaylight() {
       let currDate = new Date();
-      if (currDate.getHours() > 22 || currDate.getHours() < 7) {
-        return true;
-      } else {
-        return false;
-      }
+      return currDate.getHours() > 22 || currDate.getHours() < 7;
     }
   }
 }

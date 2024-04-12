@@ -19,10 +19,14 @@ import './assets/css/font-awesome.min.css'
 import 'mavon-editor/dist/css/index.css'
 
 import {vueBaberrage} from 'vue-baberrage'
+import VCalendar from 'v-calendar';
 
 Vue.use(ElementUI)
 Vue.use(vueBaberrage)
 Vue.use(mavonEditor)
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+});
 
 Vue.prototype.$http = http
 Vue.prototype.$common = common

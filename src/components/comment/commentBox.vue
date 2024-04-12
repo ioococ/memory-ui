@@ -52,9 +52,9 @@
 </template>
 
 <script>
-  const emoji = () => import( "../funny/emoji.vue");
-  const proButton = () => import( "../common/proButton");
-  const uploadPicture = () => import( "../common/uploadPicture");
+  const emoji = () => import("@/components/funny/emoji.vue");
+  const proButton = () => import("@/components/common/proButton");
+  const uploadPicture = () => import("@/components/common/uploadPicture");
 
   export default {
     components: {
