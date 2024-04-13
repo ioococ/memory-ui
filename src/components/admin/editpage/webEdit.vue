@@ -228,7 +228,7 @@
 </template>
 
 <script>
-  const uploadPicture = () => import("@/components/common/uploadPicture.vue");
+  const uploadPicture = () => import("@/components/page/common/uploadPicture.vue");
 
   export default {
     components: {

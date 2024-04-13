@@ -91,7 +91,7 @@
 
 <script>
   import mousedown from '@/utils/mousedown';
-  const myHeader = () => import("@/components/skeleton/myHeader.vue");
+  const myHeader = () => import("@/components/page/skeleton/myHeader.vue");
 
   export default {
     components: {

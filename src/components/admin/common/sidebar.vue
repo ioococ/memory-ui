@@ -38,6 +38,7 @@
           {icon: "el-icon-postcard", index: "/postList", title: "文章管理", isBoss: false},
           {icon: "el-icon-notebook-2", index: "/sortList", title: "分类管理", isBoss: true},
           {icon: "el-icon-edit", index: "/diaryList", title: "日记管理", isBoss: true},
+          {icon: "el-icon-edit", index: "/mailList", title: "邮件管理", isBoss: true},
           {icon: "el-icon-tickets", index: "/commentList", title: "评论管理", isBoss: false},
           {icon: "el-icon-s-comment", index: "/treeHoleList", title: "留言管理", isBoss: true},
           {icon: "el-icon-paperclip", index: "/resourceList", title: "资源管理", isBoss: true},

@@ -51,11 +51,11 @@
 
 <script>
 
-  const myFooter = () => import("@/components/skeleton/myFooter");
-  const photo = () => import("@/components/funny/photo");
-  const proTag = () => import("@/components/common/proTag.vue");
-  const proButton = () => import("@/components/common/proButton.vue");
-  const uploadPicture = () => import("@/components/common/uploadPicture.vue");
+  const myFooter = () => import("@/components/page/skeleton/myFooter");
+  const photo = () => import("@/components/page/funny/photo");
+  const proTag = () => import("@/components/page/common/proTag.vue");
+  const proButton = () => import("@/components/page/common/proButton.vue");
+  const uploadPicture = () => import("@/components/page/common/uploadPicture.vue");
 
   export default {
     components: {

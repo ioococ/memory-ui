@@ -77,7 +77,7 @@
 </template>
 
 <script>
-  const proButton = () => import("../common/proButton");
+  const proButton = () => import("../common/proButton.vue");
 
   export default {
     components: {

@@ -98,8 +98,8 @@
 
 <script>
   // const graffiti = () => import("./graffiti");
-  const commentBox = () => import("./commentBox");
-  const proPage = () => import("../common/proPage");
+  const commentBox = () => import("./commentBox.vue");
+  const proPage = () => import("../common/proPage.vue");
 
   export default {
     components: {

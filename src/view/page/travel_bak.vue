@@ -61,9 +61,9 @@
 
 <script>
 
-  const myFooter = () => import("@/components/skeleton/myFooter.vue");
-  const photo = () => import("@/components/funny/photo.vue");
-  const proTag = () => import("@/components/common/proTag.vue");
+  const myFooter = () => import("@/components/page/skeleton/myFooter.vue");
+  const photo = () => import("@/components/page/funny/photo.vue");
+  const proTag = () => import("@/components/page/common/proTag.vue");
 
   export default {
     components: {
