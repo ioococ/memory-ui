@@ -121,7 +121,7 @@ export default {
         type: 'success',
         center: true
       }).then(() => {
-        this.$http.get(this.$constant.baseURL + "/article/deleteDiary", {id: item.id}, true).then((res) => {
+        this.$http.get(this.$constant.baseURL + "/diary/deleteDiary", {id: item.id}, true).then((res) => {
           this.pagination.current = 1;
           this.getDiaries();
           this.$message({type: "success", message: "删除成功！"});
